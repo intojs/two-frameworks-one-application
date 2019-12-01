@@ -1,4 +1,6 @@
-# Tiptoe around React or Express through Business Oriented Architecture
+# Tiptoe around frameworks like React or Express through Business-Driven Architecture
+
+[Checkout the article on Medium.com](https://medium.com/@danieldughila/what-the-hell-two-frameworks-one-app-5f29db981949)
 
 A few years ago, I started on a journey to distill a way of building software that delivers value while keeping me from burning out. I wanted a way to avoid that small, innocent-looking task turning into days of hard work!
 
