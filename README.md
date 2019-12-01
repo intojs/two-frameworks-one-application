@@ -2,13 +2,15 @@
 
 [Checkout the article on Medium.com](https://medium.com/@danieldughila/what-the-hell-two-frameworks-one-app-5f29db981949)
 
-A few years ago, I started on a journey to distill a way of building software that delivers value while keeping me from burning out. I wanted a way to avoid that small, innocent-looking task turning into days of hard work!
+A few years ago, I started on a journey to distill a way of building software that delivers value while keeping me from burning out.
 
-Throughout my career, tight deadlines and ever-changing requirements were constants that often enough left me frustrated and overworked.
+Throughout my career, tight deadlines and ever-changing requirements were constants that often enough left me frustrated and overworked. I wanted a way to avoid that small, innocent-looking task turning into days of hard work!
 
-Building from my last article, _The Four Layers of Single Page Applications_, together with a lot of lessons learned from Robert C. Martin's _Clean Architecture_ and Eric Evan's _Domain Driven Design_, I'm going to take you through a few thoughts about building business-driven applications put into practice by an example.
+I feel we are focusing too much on the frameworks and libraries we use. We even call ourselves React or Angular "5. whatever" developers. When asked to describe the applications that we're working on, we will describe fancy React-Redux apps, forgetting to mention what our applications do altogether.
+                                                                        
+Building from my last article, _The Four Layers of Single Page Applications_, together with a lot of lessons learned from Robert C. Martin's _Clean Architecture_ and Eric Evan's _Domain Driven Design_ book, I'm going to take you on a journey about building business-driven applications put into practice by an example.
 
-At the end of our journey, we will conclude that we can build applications as ecosystems formed from a core consisting of business logic and various components orbiting around it.
+I firmly believe we should distance ourselves from frameworks and build applications as ecosystems, formed by a core consisting of business logic and various components orbiting around it.
 
 # The client
 
