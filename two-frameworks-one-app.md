@@ -1,6 +1,8 @@
-Throughout my career, tight deadlines and ever-changing requirements were constants that often enough left me frustrated and overworked.
+# Tiptoe around React or Express through Business Oriented Architecture
 
 A few years ago, I started on a journey to distill a way of building software that delivers value while keeping me from burning out. I wanted a way to avoid that small, innocent-looking task turning into days of hard work!
+
+Throughout my career, tight deadlines and ever-changing requirements were constants that often enough left me frustrated and overworked.
 
 Building from my last article, _The Four Layers of Single Page Applications_, together with a lot of lessons learned from Robert C. Martin's _Clean Architecture_ and Eric Evan's _Domain Driven Design_, I'm going to take you through a few thoughts about building business-driven applications put into practice by an example.
 
