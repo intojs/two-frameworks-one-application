@@ -2,7 +2,11 @@ Throughout my career, tight deadlines and ever-changing requirements were consta
 
 A few years ago, I started on a journey to distill a way of building software that delivers value while keeping me from burning out. I wanted a way to avoid that small, innocent-looking task turning into days of hard work!
 
-# The customer
+Building from my last article, _The Four Layers of Single Page Applications_, together with a lot of lessons learned from Robert C. Martin's _Clean Architecture_ and Eric Evan's _Domain Driven Design_, I'm going to take you through a few thoughts about building business-driven applications put into practice by an example.
+
+At the end of our journey, we will conclude that we can build applications as ecosystems formed from a core consisting of business logic and various components orbiting around it.
+
+# The client
 
 What I realized tackling the problem from various angles is that it's best to start with the customer.
 
@@ -25,6 +29,10 @@ The frameworks and databases we use represent just delivery and persistence mech
 # The loan calculator
 
 Let's take a hypothetical example of building a loan calculator, a simple application to determine the monthly payment for a fixed-rate loan.
+
+With a new client and a short deadline (three one week sprints), we have a very challenging task on our hands.
+
+With a short deadline and unknow technologies, we have a very challenging task on our hands.
 
 Following the guidelines found in the brilliant book _Writing Effective Use Cases_ written by _Alistair Cockburn_, let's define a simple use case, user story, for our task.
 
@@ -73,19 +81,21 @@ Following the guidelines found in the brilliant book _Writing Effective Use Case
 - Interest rate discount for life insurance opt-in: **-3% per annum**
 - The monthly payments will be calculated using this simple **formula**
 
-## The implementation
+## Sprint one, the core implementation
 
 Using TDD, I have built the _Loan Calculator_ in _TypeScript_ as an independent node package without any hard dependencies and no delivery mechanism apart from unit tests.
 
-Let's look at the _calculateLoan_ use case implementation.
-
-The **Calculator** receives a request from the **User** to calculate the loan. It then saves the data through a repository and sends an email with the calculation to the **User**'s email address, returning it at the end.
+Let's look at the _calculateLoan_ use case implementation. The **Calculator** receives a request from the **User** to calculate the loan. It then saves the data through a repository and sends an email with the calculation to the **User**'s email address, returning it at the end.
 
 I would argue that the implementation reads like the user story.
 
-We can use the application through unit tests. The _Loan Calculator_ depends on a hypothetical loan repository and email service provided by its consumer, in this case, the testing framework. For testing purposes, I have implemented the loan repository and email service using in-memory solutions.
+Even without a delivery mechanism in place, we can use the application through unit tests.
 
-# Te Express app
+The _Loan Calculator_ depends on a hypothetical loan repository and email service provided by its consumer, in this case, the testing framework.
+
+For testing purposes, I have implemented the loan repository and email service using in-memory solutions.
+
+# Sprint two, the Express app
 
 To save time, the project manager decides to deliver the first version of the loan calculator through an Express app.
 
@@ -93,13 +103,17 @@ The business people will be able to test the app's logic through Postman.
 
 The back-end team will implement the repository using a NoSql solution and the email service using a 3rd party vendor.
 
-# The React app
+# Sprint three, the React app
 
 Next sprint, he decides on delivering the loan calculator to the bank's customers through a React application.
 
 The app will import the calculator module and build a fancy UI around it.
 
 The front-end developers will implement the loan repository and email service using the solutions already put in place by the backend-team through ajax calls. 
+
+# We did it!
+
+We built a flexible loan calculator served, depending on the project needs, both server and client-side, without tying ourselves to any fancy framework or complicated services.
 
 # Think in term of plugins
 
