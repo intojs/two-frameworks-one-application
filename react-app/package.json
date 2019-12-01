@@ -1,0 +1,43 @@
+{
+  "name": "load-calculator-react-app",
+  "description": "Loan calculator React App",
+  "version": "1.0.0",
+  "author": "Daniel Dughila",
+  "license": "ISC",
+  "scripts": {
+    "lint": "tslint --fix -c tslint.json -p tsconfig.json",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test",
+    "eject": "react-scripts eject"
+  },
+  "dependencies": {
+    "@types/jest": "24.0.15",
+    "@types/react": "16.8.23",
+    "@types/react-dom": "16.8.5",
+    "@types/reactstrap": "^8.0.1",
+    "@types/yup": "^0.26.23",
+    "bootstrap": "^4.3.1",
+    "calculator": "../calculator",
+    "formik": "^1.5.8",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-scripts": "3.0.1",
+    "reactstrap": "^8.0.1",
+    "tslint": "^5.19.0",
+    "typescript": "3.4.5",
+    "yup": "^0.27.0"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
