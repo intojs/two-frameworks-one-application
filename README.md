@@ -36,7 +36,7 @@ Let's take a hypothetical example of implementing a loan calculator, a simple ap
 
 With a new client and a short deadline (three one week sprints), we have a very challenging task on our hands.
 
-The first thing we need to do is talk to the customer and understand their business.
+The first thing we need to do is talk to the customer and understand their business and requirements.
 
 With this priceless information, following the guidelines found in the brilliant book _Writing Effective Use Cases_ written by _Alistair Cockburn_, we are ready to define the use case for our task (our user story).
 
