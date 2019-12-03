@@ -10,11 +10,11 @@ I wanted a way to avoid that small, innocent-looking task turning into days of h
 
 A few years ago, I started on a journey to distill a better way of engineering software, one that delivers value while keeping me from burning out.
 
-Continuing from my last article, _The Four Layers of Single Page Applications_, together with a lot of lessons learned from Robert C. Martin's _Clean Architecture_ and Eric Evan's _Domain Driven Design_ book, I'm going to take you on a journey on developing business-driven applications.
+Continuing from my last article, _The Four Layers of Single Page Applications_, together with a lot of lessons learned from Robert C. Martin's _Clean Architecture_ and Eric Evan's _Domain Driven Design_ book, that quest led me to business-driven applications.
 
-You're probably asking what are business-driven applications and how do we go on about building them?
+Right now, you’re probably wondering what they are and if it's worth learning more about them.
 
-# Easy, we talk to our client!
+# The gist of business-driven applications
 
 Whenever business people talk to me about engineering their software, the terms they use are solely related to their business domain and needs. I have rarely seen a client talking about JavaScript frameworks. The software we develop has to represent our customer's domain.
 
@@ -26,7 +26,7 @@ I am going to be drastically and say nothing else matters except the customer's 
 
 I feel we are focusing too much on the frameworks and libraries we use. We even call ourselves React or Angular "5. whatever" developers. When asked to describe the applications that we're working on, we will describe fancy React-Redux apps, forgetting to mention what our applications do altogether. The frameworks and databases we use represent just delivery and persistence mechanisms; implementations meant to satisfy the business requirements of our customers.
                    
-I firmly believe we should architect applications as ecosystems, formed by a core consisting of business logic and various components orbiting around it.
+I firmly believe we should visualize applications as ecosystems composed of core business logic with various components orbiting around it.
 
 # If you like the fundamentals of business-driven applications, how about building one together with me?   
 
@@ -123,8 +123,8 @@ We created a flexible loan calculator served, depending on the project requireme
 
 Starting from the client's business needs made us very flexible in choosing our technologies. We were able to build loosely coupled software that's easy to change and maintain.
 
-# Developing business-driven applications will keep you safe from most difficulties encountered in your day to day engineering work
+# I believe developing business-driven applications will keep you safe from most difficulties encountered in your day to day engineering work
 
-Thank you for joining me on this journey to learn about business-driven architecture! If we've got this right, we'll meet on a beach somewhere sipping pina colada! :)
+Thank you for joining me on this journey to learn about business-driven architecture! If I've got this right, we'll meet on a beach somewhere sipping Pina Coladas! :)
 
 I would love to read your opinions on this article, so please comment below; follow me here or on Twitter to get updates about my work.
