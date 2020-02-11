@@ -1,6 +1,10 @@
 import { InterestRate } from './InterestRate';
 import { LoanAmount } from './LoanAmount';
-import { LoanTerm } from './LoanTerm';
+import { convertLoanTermToMonths, LoanTerm } from './LoanTerm';
+
+interface MonthlyPayment {
+  value: number;
+}
 
 interface Payload {
   readonly interestRate: InterestRate;
@@ -8,26 +12,17 @@ interface Payload {
   readonly loanTerm: LoanTerm;
 }
 
-export class MonthlyPayment {
+const round = (x: number): number => Math.round(x * 100) / 100;
 
-  static create(payload: Payload): MonthlyPayment {
-    return new MonthlyPayment(payload);
-  }
+const createMonthlyPayment = ({ loanAmount, interestRate, loanTerm }: Payload): MonthlyPayment => {
+  const principal = loanAmount.value;
+  const rate = interestRate.value / 100 / 12;
+  const payments = convertLoanTermToMonths(loanTerm.value);
 
-  private static round(x: number): number {
-    return Math.round(x * 100) / 100;
-  }
+  const x = Math.pow(1 + rate, payments);
+  const monthly = (principal * x * rate) / (x - 1);
 
-  readonly value: number;
+  return { value: round(monthly) };
+};
 
-  private constructor({ loanAmount, interestRate, loanTerm }: Payload) {
-    const principal = loanAmount.value;
-    const rate = interestRate.value / 100 / 12;
-    const payments = loanTerm.convertToMonths();
-
-    const x = Math.pow(1 + rate, payments);
-    const monthly = (principal * x * rate) / (x - 1);
-
-    this.value = MonthlyPayment.round(monthly);
-  }
-}
+export { MonthlyPayment, createMonthlyPayment };

@@ -1,4 +1,4 @@
-import { LoanTerm } from '../../main/domain/valueObjects/LoanTerm';
+import { createLoanTerm, invalidLoanTermMessage } from '../../main/domain/valueObjects/LoanTerm';
 
 describe('LoanTerm', () => {
   it('should create a valid loan term', () => {
@@ -8,9 +8,9 @@ describe('LoanTerm', () => {
       loanTerm30: 5,
     };
 
-    const loanTerm1 = LoanTerm.create(testValues.loanTerm1);
-    const loadTerm15 = LoanTerm.create(testValues.loanTerm15);
-    const loadTerm30 = LoanTerm.create(testValues.loanTerm30);
+    const loanTerm1 = createLoanTerm(testValues.loanTerm1);
+    const loadTerm15 = createLoanTerm(testValues.loanTerm15);
+    const loadTerm30 = createLoanTerm(testValues.loanTerm30);
 
     expect(loanTerm1.value).toEqual(testValues.loanTerm1);
     expect(loadTerm15.value).toEqual(testValues.loanTerm15);
@@ -18,10 +18,10 @@ describe('LoanTerm', () => {
   });
 
   it('should throw if the loan term value is invalid', () => {
-    expect(() => LoanTerm.create(0)).toThrow(LoanTerm.errorMessage);
+    expect(() => createLoanTerm(0)).toThrow(invalidLoanTermMessage);
 
-    expect(() => LoanTerm.create(6)).toThrow(LoanTerm.errorMessage);
+    expect(() => createLoanTerm(6)).toThrow(invalidLoanTermMessage);
 
-    expect(() => LoanTerm.create(1.5)).toThrow(LoanTerm.errorMessage);
+    expect(() => createLoanTerm(1.5)).toThrow(invalidLoanTermMessage);
   });
 });

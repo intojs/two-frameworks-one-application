@@ -1,5 +1,5 @@
 import { Context } from '../../main/Context';
-import { EmailAddress } from '../../main/domain/valueObjects/EmailAddress';
+import { createEmailAddress } from '../../main/domain/valueObjects/EmailAddress';
 import { calculateLoan } from '../../main/useCases/calculateLoan';
 import { CalculateLoanReq } from '../../main/useCases/CalculateLoanReq';
 
@@ -28,7 +28,7 @@ describe('calculateLoan', () => {
   it('should save the calculation', async () => {
     const calculation = await calculateLoan(request);
 
-    const address = EmailAddress.create(calculation.emailAddress);
+    const address = createEmailAddress(calculation.emailAddress);
 
     const savedCalculation = await Context.loanRepo.findOne(address);
 

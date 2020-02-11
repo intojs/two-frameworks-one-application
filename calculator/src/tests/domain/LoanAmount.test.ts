@@ -1,18 +1,23 @@
-import { LoanAmount } from '../../main/domain/valueObjects/LoanAmount';
+import {
+  createLoanAmount,
+  maxLoanAmount, maxLoanAmountMessage,
+  minLoanAmount,
+  minLoanAmountMessage,
+} from '../../main/domain/valueObjects/LoanAmount';
 
 describe('LoanAmount', () => {
   it('should create a loan amount', () => {
     const testAmount = 2000;
-    const loanAmount = LoanAmount.create(testAmount);
+    const loanAmount = createLoanAmount(testAmount);
 
     expect(loanAmount.value).toEqual(testAmount);
   });
 
-  it(`should throw if the loan amount is less than ${LoanAmount.min}`, () => {
-    expect(() => LoanAmount.create(999)).toThrow(LoanAmount.minErrorMessage);
+  it(`should throw if the loan amount is less than ${minLoanAmount}`, () => {
+    expect(() => createLoanAmount(999)).toThrow(minLoanAmountMessage);
   });
 
-  it(`should throw if the loan amount is greater than ${LoanAmount.max}`, () => {
-    expect(() => LoanAmount.create(10001)).toThrow(LoanAmount.maxErrorMessage);
+  it(`should throw if the loan amount is greater than ${maxLoanAmount}`, () => {
+    expect(() => createLoanAmount(10001)).toThrow(maxLoanAmountMessage);
   });
 });

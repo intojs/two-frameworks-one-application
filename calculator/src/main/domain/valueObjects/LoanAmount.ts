@@ -1,28 +1,30 @@
-export class LoanAmount {
-  static readonly min = 1000;
-  static readonly max = 10000;
-  static readonly minErrorMessage = `The loan amount needs to be greater or equal to ${LoanAmount.min}`;
-  static readonly maxErrorMessage = `The loan amount needs to be smaller or equal to ${LoanAmount.max}`;
-
-  static create(value: number): LoanAmount {
-    return new LoanAmount(value);
-  }
-
-  private static validate(value: number) {
-    if (value < LoanAmount.min) {
-      throw new Error(LoanAmount.minErrorMessage);
-    }
-
-    if (value > LoanAmount.max) {
-      throw new Error(LoanAmount.maxErrorMessage);
-    }
-  }
-
-  readonly value: number;
-
-  private constructor(value: number) {
-    LoanAmount.validate(value);
-
-    this.value = value;
-  }
+interface LoanAmount {
+  value: number;
 }
+
+const minLoanAmount = 1000;
+const maxLoanAmount = 10000;
+
+const minLoanAmountMessage = `The loan amount needs to be greater or equal to ${minLoanAmount}`;
+const maxLoanAmountMessage = `The loan amount needs to be smaller or equal to ${maxLoanAmount}`;
+
+const createLoanAmount = (value: number): LoanAmount => {
+  if (value < minLoanAmount) {
+    throw Error(minLoanAmountMessage);
+  }
+
+  if (value > maxLoanAmount) {
+    throw Error(maxLoanAmountMessage);
+  }
+
+  return { value };
+};
+
+export {
+  LoanAmount,
+  minLoanAmount,
+  maxLoanAmount,
+  minLoanAmountMessage,
+  maxLoanAmountMessage,
+  createLoanAmount,
+};
