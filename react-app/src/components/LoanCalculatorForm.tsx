@@ -3,7 +3,7 @@ import React, { FC } from 'react';
 import { Button, Form, FormFeedback, FormGroup, Input, Label } from 'reactstrap';
 import * as Yup from 'yup';
 
-import { LoanAmount, LoanTerm } from 'calculator';
+import { maxLoanAmount, maxLoanTerm, minLoanAmount, minLoanTerm } from 'calculator';
 
 interface LoanCalculatorFormProps {
   submit(values: LoanCalculatorFormValues): void;
@@ -32,13 +32,13 @@ const validationSchema = Yup
       .required('The email address is required'),
     loanAmount: Yup
       .number()
-      .min(LoanAmount.min, `You need to borrow at least ${LoanAmount.min} $`)
-      .max(LoanAmount.max, `You can borrow at most ${LoanAmount.max} $`)
+      .min(minLoanAmount, `You need to borrow at least ${minLoanAmount} $`)
+      .max(maxLoanAmount, `You can borrow at most ${maxLoanAmount} $`)
       .required('The loan amount is required'),
     loanTerm: Yup
       .number()
-      .min(LoanTerm.min, `Minimum loan term is ${LoanTerm.min} year`)
-      .max(LoanTerm.max, `Maximum loan term is ${LoanTerm.max} years`)
+      .min(minLoanTerm, `Minimum loan term is ${minLoanTerm} year`)
+      .max(maxLoanTerm, `Maximum loan term is ${maxLoanTerm} years`)
       .required('The loan term is required'),
   });
 

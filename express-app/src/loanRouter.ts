@@ -2,7 +2,9 @@ import express from 'express';
 import { BAD_REQUEST, INTERNAL_SERVER_ERROR } from 'http-status-codes';
 import * as Joi from 'joi';
 
-import { calculateLoan, CalculateLoanRes, Context, LoanAmount, LoanTerm } from 'calculator';
+import {
+  calculateLoan, CalculateLoanRes, Context, maxLoanAmount, maxLoanTerm, minLoanAmount, minLoanTerm,
+} from 'calculator';
 
 import { InMemoryLoanRepo } from './repositories/InMemoryLoanRepo';
 import { InMemoryEmailServ } from './services/InMemoryEmailServ';
@@ -19,13 +21,13 @@ const schema = Joi.object({
     .required(),
   loanAmount: Joi
     .number()
-    .min(LoanAmount.min)
-    .max(LoanAmount.max)
+    .min(minLoanAmount)
+    .max(maxLoanAmount)
     .required(),
   loanTerm: Joi
     .number()
-    .min(LoanTerm.min)
-    .max(LoanTerm.max)
+    .min(minLoanTerm)
+    .max(maxLoanTerm)
     .required(),
   lifeInsuranceOptIn: Joi.bool(),
 });

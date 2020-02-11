@@ -26,4 +26,4 @@ const createLoanTerm = (value: number): LoanTerm => {
   return { value };
 };
 
-export { LoanTerm, invalidLoanTermMessage, convertLoanTermToMonths, createLoanTerm };
+export { LoanTerm, minLoanTerm, maxLoanTerm, invalidLoanTermMessage, convertLoanTermToMonths, createLoanTerm };
