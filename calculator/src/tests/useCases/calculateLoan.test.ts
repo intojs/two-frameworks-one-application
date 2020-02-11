@@ -28,7 +28,7 @@ describe('calculateLoan', () => {
   it('should save the calculation', async () => {
     const calculation = await calculateLoan(request);
 
-    const address = new EmailAddress(calculation.emailAddress);
+    const address = EmailAddress.create(calculation.emailAddress);
 
     const savedCalculation = await Context.loanRepo.findOne(address);
 

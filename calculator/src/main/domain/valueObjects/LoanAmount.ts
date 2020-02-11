@@ -4,7 +4,11 @@ export class LoanAmount {
   static readonly minErrorMessage = `The loan amount needs to be greater or equal to ${LoanAmount.min}`;
   static readonly maxErrorMessage = `The loan amount needs to be smaller or equal to ${LoanAmount.max}`;
 
-  static validate(value: number) {
+  static create(value: number): LoanAmount {
+    return new LoanAmount(value);
+  }
+
+  private static validate(value: number) {
     if (value < LoanAmount.min) {
       throw new Error(LoanAmount.minErrorMessage);
     }
@@ -16,7 +20,7 @@ export class LoanAmount {
 
   readonly value: number;
 
-  constructor(value: number) {
+  private constructor(value: number) {
     LoanAmount.validate(value);
 
     this.value = value;

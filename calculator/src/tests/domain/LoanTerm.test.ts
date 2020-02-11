@@ -8,9 +8,9 @@ describe('LoanTerm', () => {
       loanTerm30: 5,
     };
 
-    const loanTerm1 = new LoanTerm(testValues.loanTerm1);
-    const loadTerm15 = new LoanTerm(testValues.loanTerm15);
-    const loadTerm30 = new LoanTerm(testValues.loanTerm30);
+    const loanTerm1 = LoanTerm.create(testValues.loanTerm1);
+    const loadTerm15 = LoanTerm.create(testValues.loanTerm15);
+    const loadTerm30 = LoanTerm.create(testValues.loanTerm30);
 
     expect(loanTerm1.value).toEqual(testValues.loanTerm1);
     expect(loadTerm15.value).toEqual(testValues.loanTerm15);
@@ -18,16 +18,10 @@ describe('LoanTerm', () => {
   });
 
   it('should throw if the loan term value is invalid', () => {
-    expect(() => {
-      return new LoanTerm(0);
-    }).toThrow(LoanTerm.errorMessage);
+    expect(() => LoanTerm.create(0)).toThrow(LoanTerm.errorMessage);
 
-    expect(() => {
-      return new LoanTerm(6);
-    }).toThrow(LoanTerm.errorMessage);
+    expect(() => LoanTerm.create(6)).toThrow(LoanTerm.errorMessage);
 
-    expect(() => {
-      return new LoanTerm(1.5);
-    }).toThrow(LoanTerm.errorMessage);
+    expect(() => LoanTerm.create(1.5)).toThrow(LoanTerm.errorMessage);
   });
 });

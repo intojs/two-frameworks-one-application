@@ -8,6 +8,10 @@ export class LoanTerm {
     smaller or equal to ${LoanTerm.max}
   `;
 
+  static create(value: number): LoanTerm {
+    return new LoanTerm(value);
+  }
+
   private static isWhole(value: number): boolean {
     return value % 1 === 0;
   }
@@ -20,7 +24,7 @@ export class LoanTerm {
 
   readonly value: number;
 
-  constructor(value: number) {
+  private constructor(value: number) {
     LoanTerm.validate(value);
 
     this.value = value;

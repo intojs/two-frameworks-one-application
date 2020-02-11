@@ -5,9 +5,9 @@ describe('InterestRate', () => {
   describe('when the loan term is less than two years', () => {
     describe('when there is no life insurance opt-in', () => {
       it('should be equal to 20% per annum', () => {
-        const loanTerm = new LoanTerm(1);
+        const loanTerm = LoanTerm.create(1);
 
-        const interestRate = new InterestRate(loanTerm, false);
+        const interestRate = InterestRate.create(loanTerm, false);
 
         expect(interestRate.value).toEqual(20);
       });
@@ -15,9 +15,9 @@ describe('InterestRate', () => {
 
     describe('when there is life insurance opt-in', () => {
       it('should be equal to 17% per annum', () => {
-        const loanTerm = new LoanTerm(1);
+        const loanTerm = LoanTerm.create(1);
 
-        const interestRate = new InterestRate(loanTerm, true);
+        const interestRate = InterestRate.create(loanTerm, true);
 
         expect(interestRate.value).toEqual(17);
       });
@@ -27,9 +27,9 @@ describe('InterestRate', () => {
   describe('when the loan term is greater than two years', () => {
     describe('when there is no life insurance opt-in', () => {
       it('should be equal to 15% per annum', () => {
-        const loanTerm = new LoanTerm(3);
+        const loanTerm = LoanTerm.create(3);
 
-        const interestRate = new InterestRate(loanTerm, false);
+        const interestRate = InterestRate.create(loanTerm, false);
 
         expect(interestRate.value).toEqual(15);
       });
@@ -37,9 +37,9 @@ describe('InterestRate', () => {
 
     describe('when there is life insurance opt-in', () => {
       it('should be equal to 12% per annum', () => {
-        const loanTerm = new LoanTerm(3);
+        const loanTerm = LoanTerm.create(3);
 
-        const interestRate = new InterestRate(loanTerm, true);
+        const interestRate = InterestRate.create(loanTerm, true);
 
         expect(interestRate.value).toEqual(12);
       });

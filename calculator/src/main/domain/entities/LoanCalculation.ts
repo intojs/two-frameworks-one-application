@@ -5,15 +5,18 @@ import { LoanTerm } from '../valueObjects/LoanTerm';
 import { MonthlyPayment } from '../valueObjects/MonthlyPayment';
 
 interface Payload {
-  readonly emailAddress: EmailAddress;
-  readonly loanAmount: LoanAmount;
-  readonly loanTerm: LoanTerm;
+  readonly emailAddress: string;
+  readonly loanAmount: number;
+  readonly loanTerm: number;
   readonly lifeInsuranceOptIn: boolean;
-  readonly interestRate: InterestRate;
-  readonly monthlyPayment: MonthlyPayment;
 }
 
 export class LoanCalculation {
+
+  static create(payload: Payload) {
+    return new LoanCalculation(payload);
+  }
+
   readonly emailAddress: EmailAddress;
   readonly loanAmount: LoanAmount;
   readonly loanTerm: LoanTerm;
@@ -21,21 +24,21 @@ export class LoanCalculation {
   readonly interestRate: InterestRate;
   readonly monthlyPayment: MonthlyPayment;
 
-  constructor(payload: Payload) {
-    const {
-      emailAddress,
-      loanAmount,
-      loanTerm,
-      lifeInsuranceOptIn,
-      interestRate,
-      monthlyPayment,
-    } = payload;
+  private constructor(payload: Payload) {
+    this.emailAddress = EmailAddress.create(payload.emailAddress);
 
-    this.emailAddress = emailAddress;
-    this.loanAmount = loanAmount;
-    this.loanTerm = loanTerm;
-    this.lifeInsuranceOptIn = lifeInsuranceOptIn;
-    this.interestRate = interestRate;
-    this.monthlyPayment = monthlyPayment;
+    this.loanAmount = LoanAmount.create(payload.loanAmount);
+
+    this.loanTerm = LoanTerm.create(payload.loanTerm);
+
+    this.lifeInsuranceOptIn = payload.lifeInsuranceOptIn;
+
+    this.interestRate = InterestRate.create(this.loanTerm, payload.lifeInsuranceOptIn);
+
+    this.monthlyPayment = MonthlyPayment.create({
+      interestRate: this.interestRate,
+      loanAmount: this.loanAmount,
+      loanTerm: this.loanTerm,
+    });
   }
 }
